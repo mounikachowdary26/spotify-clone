@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/albums/spotify.logo.jpg">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center">
+            <img src="/assets/albums/spotify-1759471_1920.jpg" alt="Bootstrap" width="70" height="70" >
+        </div>
+ <a class="navbar-brand home-btn d-flex align-items-center" href="#main-content" style="padding: 0;">
+        <i class="fa fa-home" aria-hidden="true"></i> 
+    </a>    
+        <div class="collapse navbar-collapse d-flex ">
+            <div class="position-relative" style="max-width: 400px; width: 100%; flex-grow: 0;">
+                <i class="fa fa-search position-absolute" style="left: 8px; top: 10px;" aria-hidden="true"></i>
+                <input id="search-bar" class="form-control search-bar ps-4" type="search" 
+                       placeholder="    What do you want to play?"  
+                       aria-label="Search" 
+                       style="padding-left: 30px;">
+            </div>
+    </div>
+         <!-- Login and Signup Buttons (aligned to the right) -->
+         <div class="d-flex ms-auto">
+            <a class="btn btn-outline-primary me-2"href="#login">
+            
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+            </a>
+            <a class="btn btn-outline-success" href="#signup">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
+            </a>
+        </div>
+        
+    </div>
+</nav>
+<div style="height: 2px;" id="main-content">
+<!-- side nav bar -->
+     <div class="side-nav d-flex flex-column">
+        <button class="btn btn-light text-start mb-2" onclick="openLibrary()">
+            <i class="fas fa-book"></i> <!-- Icon for "Your Library" -->
+            Your Library
+        </button>
+        <hr class="border-secondary my-3">
+        <button class="btn btn-light text-start mb-2" onclick="createPlaylist()">
+            <i class="fas fa-plus-circle"></i> <!-- Icon for "Create Playlist" -->
+            Create Playlist
+        </button>
+        <button class="btn btn-light text-start mb-2" onclick="showLikedSongs()">
+            <i class="fas fa-heart"></i> <!-- Icon for "Liked Songs" -->
+            Liked Songs
+        </button>
+        <button class="btn btn-light text-start mb-2" onclick="discoverMusic()">
+            <i class="fas fa-music"></i> <!-- Icon for "Discover Music" -->
+            Discover Music
+        </button>
+        <button class="btn btn-light text-start mb-2" onclick="settings()">
+            <i class="fas fa-cogs"></i> <!-- Icon for "Settings" -->
+            Settings
+        </button>
+    </div>
+     <!-- artist container -->
+     <div class="main-content">
+        <!-- Container for Artist Cards -->
+        <div class="artist-container py-4">
+            <h3 class="text-center mb-3">Featured Artists</h3>
+            <div class="artist-header d-flex justify-content-between align-items-center">
+                <span></span>
+                <button class="btn btn-primary show-more-btn">Show More</button>
+            </div>
+            <div class="artist-cards d-flex gap-4 flex-wrap ">
+                <div class="artist-card p-2" data-artist="Taylor Swift">
+                    <img src="/assets/albums/singers/taylor swift.jpg" class="artist-img" alt="Taylor Swift">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2"data-artist="Arjit Singh" >
+                    <img src="/assets/albums/singers/arjit singh.jpeg" class="artist-img" alt="Arjit Singh">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2" data-artist="Justin Bieber">
+                    <img src="/assets/albums/singers/justin.jpeg" class="artist-img" alt="Justin Bieber">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2" data-artist="the weekend">
+                    <img src="/assets/images/the weekend.avif" class="artist-img" alt="the weekend">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2" data-artist="Anirudh">
+                    <img src="/assets/albums/singers/anirudh.jpeg" class="artist-img" alt="Anirudh">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2" data-artist="selena">
+                    <img src="/assets/albums/singers/selena.jpeg" class="artist-img" alt="selena">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2 " data-artist="ed-sheeran">
+                    <img src="/assets/albums/singers/ed-sheeran.jpg" class="artist-img" alt="ed-sheeran">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div class="artist-card p-2 hidden "   data-artist="lana del rey">
+                    <img src="/assets/albums/singers/OIP.jpeg" class="artist-img" alt="lana del rey">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2 hidden" data-artist="thaman">
+                    <img src="/assets/albums/singers/thaman.jpeg" class="artist-img" alt="thaman">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2 hidden" data-artist="karthik">
+                    <img src="/assets/albums/singers/karthik.jpeg" class="artist-img" alt="karthik">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2 hidden" data-artist="pritham">
+                    <img src="/assets/albums/singers/pritham.jpeg" class="artist-img" alt="pritham">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="artist-card p-2 hidden" data-artist="sirivennela">
+                    <img src="/assets/albums/singers/sirivennela.jpeg" class="artist-img" alt="Sirivennela">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Songs Section -->
+    <div id="songs-section" class="songs-section" style="display: none;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 id="artist-name-heading"></h3>
+        <button id="close-songs-btn" class="btn ">Close</button>
+    </div>
+        <div id="songs-list" class="songs-list">
+            <!-- Songs will be dynamically populated here -->      
+        </div>
+    </div>
+</div>
+<!-- english-songs-container -->
+                <div class="d-flex flex-wrap gap-3" style="margin-left: 250px;">
+                <div id="english-songs-container"class="carousel">
+                    <h2 class="container-heading">English Songs</h2>
+                    <div class="carousel-inner d-flex overflow-hidden">
+                    <!-- <div class="songs-wrapper"> -->
+                    <div class="card p-2"  data-song="/assets/albums/songs/Ed Sheeran - Perfect (Lyrics).mp3" data-title="perfect" data-album="ed Sheeran">
+                        <img src="/assets/images/perfect.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ed Sheeran</h5>
+                            <p class="card-text">perfect</p>
+                        </div>
+                    </div>
+                   
+                    <div class="card p-2"  data-song="/assets/albums/songs/Senorita-.mp3" data-title="senorita" data-album="Taylor swift">
+                        <img src="/assets/images/senorita.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">senorita</h5>
+                            <p class="card-text">Taylor swift</p>
+                        </div>
+                    </div>
+                    <div class="card p-2"  data-song="/assets/albums/songs/Justin Bieber - Baby (Lyrics) ft. Ludacris.mp3" data-title="baby" data-album="justin Bieber">
+                        <img src="/assets/images/baby baby.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">baby</h5>
+                            <p class="card-text">justin bieber</p>
+                        </div>
+                    </div>
+                    <div class="card p-2"  data-song="/assets/albums/songs/Blank Space.mp3" data-title="blank space" data-album="Eras tour">
+                        <img src="/assets/images/blank space.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Eras tour</h5>
+                            <p class="card-text">blankspace</p>
+                        </div>
+                    </div>
+                    <div class="card p-2"  data-song="/assets/albums/songs/Shape of You - Ed Sheeran (Lyrics)  Charlie Puth, Shawn Mendes, Ellie Goulding,....mp3" data-title="shape of you" data-album="ed Sheeran">
+                        <img src="/assets/images/shape of you.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ed Sheeran</h5>
+                            <p class="card-text">shape of you</p>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="card p-2"  data-song="/assets/albums/songs/Taylor Swift - Love Story (Lyrics).mp3" data-title="love story" data-album="Fearless">
+                        <img src="/assets/images/love story.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fearless</h5>
+                            <p class="card-text">love story</p>
+                        </div>
+                    </div>
+                    <div class="card p-2"  data-song="/assets/albums/songs/Shape of You - Ed Sheeran (Lyrics)  Charlie Puth, Shawn Mendes, Ellie Goulding,....mp3" data-title="shape of you" data-album="ed Sheeran">
+                        <img src="/assets/images/shape of you.jpeg" class="card-img-top" alt="Sample Image">
+                        <div class="play-button">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ed Sheeran</h5>
+                            <p class="card-text">shape of you</p>
+                        </div>
+                    </div>
+                </div>
+            <!-- carosel controls -->
+                <button class="carousel-control-prev" type="button">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-control-next" type="button">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+<!-- telugu-songs-carousel -->
+    <div id="telugu-songs-carousel" class="carousel ">
+        <h2 class="container-heading">Telugu Songs</h2>
+        <div class="carousel-inner d-flex overflow-hidden">
+            <!-- Telugu Song Cards -->
+            <div class="card p-2"  data-song="/assets/albums/why this kolaveri/[iSongs.info] 08 - Theme Of 3.mp3" data-title="Theme Of 3" data-album="THREE-3">
+                <img src="/assets/images/3.jpg" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">THREE-3</h5>
+                    <p class="card-text">Theme Of 3</p>
+                </div>
+            </div> 
+            
+            <div class="card p-2"  data-song="/assets/albums/songs/All Hail The Tiger.mp3" data-title="All Hail The Tiger" data-album="Devara">
+                <img src="/assets/images/devara.jpg" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Devara</h5>
+                    <p class="card-text">All Hail The Tiger</p>
+                </div>
+            </div> 
+            <div class="card p-2"  data-song="/assets/albums/songs/- Oh Sita Hey Rama.mp3" data-title="oh sita hey rama" data-album="sita_raman">
+                <img src="/assets/images/sita_raman.avif" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">sita_raman</h5>
+                    <p class="card-text">oh sita hey rama</p>
+                </div>
+            </div> 
+            <div class="card p-2"  data-song="assets/albums/songs/Sirivennela.mp3" data-title="sirivennela" data-album="syam singah roy">
+                <img src="/assets/images/ssr.jpg" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">sirivennela</h5>
+                    <p class="card-text">syam singah roy</p>
+                </div>
+            </div>
+            <div class="card p-2"  data-song="/assets/albums/songs/Andani Aakaasam.mp3" data-title="Andani Aakaasam" data-album="aakasam-nee-haddura">
+                <img src="/assets/images/aakasam-nee-haddura-.jpg" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">aakasam-nee-haddura</h5>
+                    <p class="card-text">Andani Aakaasam</p>
+                </div>
+            </div>
+      
+            <div class="card p-2"  data-song="/assets/albums/songs/Kaanunna Kalyanam.mp3" data-title="kanuna kalyanam" data-album="sita_raman">
+                <img src="/assets/images/sita_raman.avif" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">kanuna kalyanam</h5>
+                    <p class="card-text">sita raman</p>
+                </div>
+            </div>
+            <div class="card p-2"  data-song="/assets/albums/songs/Kaanunna Kalyanam.mp3" data-title="kanuna kalyanam" data-album="sita_raman">
+                <img src="/assets/images/sita_raman.avif" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">kanuna kalyanam</h5>
+                    <p class="card-text">sita raman</p>
+                </div>
+            </div>
+            <div class="card p-2"  data-song="/assets/albums/songs/Kaanunna Kalyanam.mp3" data-title="kanuna kalyanam" data-album="sita_raman">
+                <img src="/assets/images/sita_raman.avif" class="card-img-top" alt="Sample Image">
+                <div class="play-button">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">kanuna kalyanam</h5>
+                    <p class="card-text">sita raman</p>
+                </div>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+        <!-- Navigation Buttons -->
+       
+        <button class="carousel-control-prev" type="button">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="carousel-control-next" type="button">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+    </div>
+    <!-- Hindi Songs Container -->
+<div id="hindi-songs-container" class="carousel">
+    <h2 class="container-heading">Hindi Songs</h2>
+    <div class="carousel-inner d-flex overflow-hidden">
+        <!-- Hindi Song Cards -->
+        <div class="card p-2" data-song="/assets/albums/songs/Kabira.mp3" data-title="Kabira" data-album="Yeh Jawaani Hai Deewani">
+            <img src="/assets/images/kabira.jpeg" class="card-img-top" alt="Kabira">
+            <div class="play-button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Yeh Jawaani Hai Deewani</h5>
+                <p class="card-text">Kabira</p>
+            </div>
+        </div>
+        <audio src="/assets/albums/songs/Deva Deva - Extended Film VersionBrahmāstraAmitabh BRanbir @aliabhatt@pritam7415 ArijitJonita.mp3"></audio>
+        <div class="card p-2" data-song="/assets/albums/songs/Tum Hi Ho (Lyrics)Arijit SinghAashiqui 2@tseries.mp3" data-title="Tum Hi Ho" data-album="Aashiqui 2">
+            <img src="/assets/images/tum hi ho.jpeg" class="card-img-top" alt="Tum Hi Ho">
+            <div class="play-button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Aashiqui 2</h5>
+                <p class="card-text">Tum Hi Ho</p>
+            </div>
+        </div>
+        <div class="card p-2" data-song="/assets/albums/songs/Channa Mereya Full Video - ADHMRanbir Kapoor, AnushkaArijit SinghPritamKaran Johar.mp3" data-title="chenna mereya" data-album="yeh dil he mushkil">
+            <img src="/assets/images/chenna mereya.jpeg" class="card-img-top" alt="Tum Hi Ho">
+            <div class="play-button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">yeh dil he mushkil</h5>
+                <p class="card-text">chenna mereya</p>
+            </div>
+        </div>
+        <div class="card p-2" data-song="/assets/albums/songs/Deva Deva - Extended Film VersionBrahmāstraAmitabh BRanbir @aliabhatt@pritam7415 ArijitJonita.mp3" data-title="deva deva" data-album="bhrahmastra">
+            <img src="/assets/images/deva deva.jpeg" class="card-img-top" alt="Tum Hi Ho">
+            <div class="play-button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">bhrahmastra</h5>
+                <p class="card-text">Deva deva</p>
+            </div>
+        </div>
+       
+        <!-- Add more Hindi song cards as needed -->
+    </div>
+    <!-- Navigation Buttons -->
+    <button class="carousel-control-prev" type="button">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="carousel-control-next" type="button">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </button>
+</div>
+    <!-- Music Control Bar -->
+    <div class="music-control">
+        <div class="song-details">
+            <span class="song-title">No song playing</span>
+        </div>
+        <div class="playback-controls">
+          
+            <button class="skip-backward">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+            </button>
+            <button class="play-pause">
+                <i class="fa fa-play"></i>
+            </button>
+            <button class="skip-forward">
+                <i class="fa fa-redo" aria-hidden="true"></i>
+            </button>
+        </div>
+        
+  
+        <div class="progress-container">
+            <span class="current-time">0:00</span>
+            <div class="progress-bar" style="position: relative;">
+                <div></div>
+            </div>
+            <span class="duration">0:00</span>
+        </div>
+        <i class="volume-icon fa fa-volume-up"></i>
+        <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1">
+        <div class="playback-speed">
+            <label for="speed">Speed:</label>
+            <select id="speed">
+                <option value="0.5">0.5x</option>
+                <option value="1" selected>1x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x</option>
+            </select>
+        </div>
+         </div>
+    </div>
+    <script src="/script.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
